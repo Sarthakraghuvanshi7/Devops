@@ -1,6 +1,6 @@
 USE teachers_courses;
 
-CREATE TABLE Teacher (
+CREATE TABLE teachers (
   id INT AUTO_INCREMENT PRIMARY KEY,
   teacher_id INT NOT NULL, 
   name VARCHAR(255)  NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE Teacher (
   designation VARCHAR(255)  NOT NULL
 );
 
-CREATE TABLE Course (
+CREATE TABLE courses (
   id INT AUTO_INCREMENT PRIMARY KEY,
   course_id INT NOT NULL,
   course_mentor VARCHAR(255) NOT NULL,

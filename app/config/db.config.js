@@ -1,7 +1,7 @@
 module.exports = {
     HOST: "assignment-database",
     USER: "root",
-    PASSWORD: "",
+    PASSWORD: "123456",
     DB: "teachers_courses",
-    PORT: 5000
+    PORT: 3306
   };
