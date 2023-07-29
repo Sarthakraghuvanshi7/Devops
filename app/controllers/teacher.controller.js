@@ -13,12 +13,11 @@ exports.addTeacher = (req, res) => {
         is_active: req.body.is_active,
         designation: req.body.designation
     });
-    // Save Tutorial in the database
     Teacher.add(teacher, (err, data) => {
       if (err)
         res.status(500).send({
           message:
-            err.message || "Some error occurred while creating the Tutorial."
+            err.message || "Some error occurred while adding teacher."
         });
       else res.send(data);
     });
