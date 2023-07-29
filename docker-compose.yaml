@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  assignment-api-server:
+    build:
+      context: ./docker/application # Replace this with the actual path to your API server Dockerfile
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080" # Map the container port 8080 to host port 8080
+    depends_on:
+      - assignment-database # Wait for the database container to be ready
+
+  assignment-database:
+    build:
+      context: ./docker/db # Replace this with the actual path to your database Dockerfile
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000" # Map the container port 5000 to host port 5000
+    volumes:
+      - db_data:/var/lib/mysql # Persist MySQL data between container restarts
+
+volumes:
+  db_data:
