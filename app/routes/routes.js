@@ -5,5 +5,9 @@ module.exports = app => {
 
     router.post("/", teacher.addTeacher);
 
-    app.use('/api/teachers', router);
+    router.get("/:id", teacher.getTeacherWithId)
+
+    router.get("/", teacher.getTeachersWithFilters)
+
+    app.use('/teacher', router);
 }
