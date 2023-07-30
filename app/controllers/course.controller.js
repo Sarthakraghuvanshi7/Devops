@@ -32,7 +32,7 @@ exports.getCourseWithId = (req, res) => {
         if (err) {
           if (err.kind === "not_found") {
             res.status(404).send({
-              message: `Not found Teacher with id ${req.params.id}.`
+              message: `Not found Course with id ${req.params.id}.`
             });
           } else {
             res.status(500).send({
@@ -48,7 +48,7 @@ exports.getCoursesWithFilters = (req, res) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Teacher with params ${req.params}.`
+            message: `Not found Course with params ${req.params}.`
           });
         } else {
           res.status(500).send({
