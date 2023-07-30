@@ -7,6 +7,8 @@ module.exports = app => {
 
     router.get("/:id", course.getCourseWithId)
 
+    router.get("/", course.getCoursesWithFilters)
+
     app.use('/course', router);
 
 }

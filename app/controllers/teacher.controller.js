@@ -40,7 +40,6 @@ exports.getTeacherWithId = (req, res) => {
 };
 
 exports.getTeachersWithFilters = (req, res) => {
-  console.log(typeof req.query)
   Teacher.findByFilter(req.query, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
