@@ -39,15 +39,17 @@ Teacher.findById = function(id, result) {
 }
 
 Teacher.findByFilter = function(filters, result) {
-    query = "SELECT * FROM teachers WHERE"
+    query = "SELECT * FROM teachers"
     checked = false
     if (filters["teacher_id"]) {
-        query = query.concat(" ", `teacher_id='${filters["teacher_id"]}'`)
+        query = query.concat(" WHERE ", `teacher_id='${filters["teacher_id"]}'`)
         checked = true;
     }
     if (filters["name"]) {
         if (checked) {
             query = query.concat(" &&")
+        } else {
+            query = query.concat(" WHERE ")
         }
         query = query.concat(" ", `name='${filters["name"]}'`)
         checked = true;
@@ -55,6 +57,8 @@ Teacher.findByFilter = function(filters, result) {
     if (filters["is_active"]) {
         if (checked) {
             query = query.concat(" &&")
+        } else {
+            query = query.concat(" WHERE ")
         }
         is_active = filters["is_active"] ? 1 : 0
         query = query.concat(" ", `is_active='${is_active}'`)
@@ -63,6 +67,8 @@ Teacher.findByFilter = function(filters, result) {
     if (filters["designation"]) {
         if (checked) {
             query = query.concat(" &&")
+        } else {
+            query = query.concat(" WHERE ")
         }
         query = query.concat(" ", `designation='${filters["designation"]}'`)
         checked = true;

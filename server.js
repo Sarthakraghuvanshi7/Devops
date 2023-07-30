@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
 
-require("./app/routes/routes.js")(app);
+require("./app/routes/teacher.routes.js")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
