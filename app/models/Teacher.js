@@ -23,11 +23,9 @@ Teacher.add = function(teacher, result) {
 Teacher.findById = function(id, result) {
     sql.query(`SELECT * FROM teachers WHERE teacher_id = ${id}`, (err, res) => {
         if (err) {
-          console.log("error: ", err);
           result(err, null);
           return;
         }
-
         if (res.length) {
             delete res[0]["id"];
             result(null, res[0]);

@@ -29,4 +29,26 @@ Course.add = function(course, result) {
     })
 }
 
+Course.findById = function(id, result) {
+    sql.query(`SELECT * FROM courses WHERE course_id = ${id}`, (err, res) => {
+        if (err) {
+          console.log("error: ", err);
+          result(err, null);
+          return;
+        }
+        if (res.length) {
+            delete res[0]["id"];
+            Teacher.findById(res[0].course_mentor, (err, data) => {
+                if (err) {
+                    result(err, null);
+                    return
+                }
+                result(null, {...res[0], course_mentor: data});
+            })
+            return;
+        }
+        result({ kind: "not_found" }, null);
+    })
+}
+
 module.exports = Course

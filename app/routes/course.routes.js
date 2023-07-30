@@ -5,6 +5,8 @@ module.exports = app => {
 
     router.post("/", course.addCourse);
 
+    router.get("/:id", course.getCourseWithId)
+
     app.use('/course', router);
 
 }
