@@ -1,5 +1,6 @@
 const sql = require("./db.js");
 const dbConfig = require("../config/db.config.js")
+const Teacher = require("./Teacher.js")
 
 const Course = function (course) {
     this.course_id = course.course_id;
@@ -10,3 +11,22 @@ const Course = function (course) {
     this.description = course.description;
     this.is_active = course.is_active;
 }
+
+Course.add = function(course, result) {
+    sql.query("INSERT INTO courses SET ?", course, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+            return;
+        }
+        Teacher.findById(course.course_mentor, (err, data) => {
+            if (err) {
+                result(err, null);
+                return
+            }
+            result(null, {...course, course_mentor: data})
+        })
+    })
+}
+
+module.exports = Course

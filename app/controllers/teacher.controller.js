@@ -16,9 +16,9 @@ exports.addTeacher = (req, res) => {
   Teacher.add(teacher, (err, data) => {
     if (err)
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while adding teacher."
-      });
+          message:
+            err.message || "Some error occurred while adding teacher."
+        });
     else res.send(data);
   });
 };

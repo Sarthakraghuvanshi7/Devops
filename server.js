@@ -18,6 +18,7 @@ app.get("/", (req, res) => {
 });
 
 require("./app/routes/teacher.routes.js")(app);
+require("./app/routes/course.routes.js")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
